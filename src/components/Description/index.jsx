@@ -3,7 +3,7 @@ import { useInView, motion } from 'framer-motion';
 import { useRef } from 'react';
 import { slideUp, opacity } from './animation';
 import Rounded from '../../common/RoundedButton';
-export default function index() {
+export default function Description() {
 
     const phrase = "MOHAMED AGUIAGOU Photography Videographyl like photographer Edit photos and videos 📷Only with the phone and I want to have a professional camera dima Morocco 🇲🇦♓.";
     const description = useRef(null);
