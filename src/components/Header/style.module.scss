@@ -1,149 +1,124 @@
-.header{
+.header {
     position: absolute;
     display: flex;
     z-index: 1;
     top: 0;
     color: white;
-    padding: 35px;
+    padding: 20px; // تقليل الحشوة للأجهزة الصغيرة
     justify-content: space-between;
     width: 100%;
     font-weight: 300;
     box-sizing: border-box;
     align-items: center;
     
-    .logo{
+    .logo {
         display: flex;
         cursor: pointer;
-        p{
+        p {
             margin: 0px;
             transition: all 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+            font-size: 14px; // حجم خط أصغر للأجهزة الصغيرة
         }
-        .name{
+        .name {
             display: flex;
             position: relative;
             overflow: hidden;
             white-space: nowrap;
             margin-left: 5px;
             transition: all 0.5s cubic-bezier(0.76, 0, 0.24, 1);
-            p{
+            p {
                 position: relative;
                 transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
-                &:nth-of-type(2){
-                    padding-left: 0.3em;
+                &:nth-of-type(2) {
+                    padding-left: 0.2em; // تقليل الحشوة
                 }
-                &:nth-of-type(3){
+                &:nth-of-type(3) {
                     position: absolute;
-                    left: 120px;
-                    padding-left: 0.3em;
+                    left: 90px; // تقليل المسافة للأجهزة الصغيرة
+                    padding-left: 0.2em;
                 }
             }
         }
-        &:hover{
-            .copyright{
+        &:hover {
+            .copyright {
                 transform: rotate(360deg);
             }
-            .name{
-                padding-right: 30px;
-                .codeBy{
-                    transform: translateX(-100%);
+            .name {
+                padding-right: 20px; // تقليل الحشوة
+                .codeBy {
+                    transform: translateX(-80%); // تعديل الحركة
                 }
-                .dennis{
-                    transform: translateX(-65px);
-                }
-                .snellenberg{
-                    transform: translateX(-65px);
+                .dennis, .snellenberg {
+                    transform: translateX(-50px); // تعديل الحركة
                 }
             }
         }
     }
-    .nav{
+    
+    .nav {
         display: flex;
         align-items: center;
-
-        .el{
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            z-index: 1;
-            padding: 15px;
-            cursor: pointer;
-            &:hover{
-                .indicator{
-                    transform: scale(1);
-                }
-            }
-            .indicator{
-                position: absolute;
-                width: 5px;
-                height: 5px;
-                top: 45px;
-                left: 50%;
-                background-color: white;
-                border-radius: 50%;
-                transform: scale(0) translateX(-50%);
-                transition: transform 0.2s cubic-bezier(0.76, 0, 0.24, 1);
+        
+        .el {
+            padding: 10px; // تقليل الحشوة
+            .indicator {
+                top: 35px; // تعديل الموضع
             }
         }
-        a{
-            cursor: pointer;
-        }
-    } 
+    }
 }
-.headerButtonContainer{
-    transform: scale(0);
-    position: fixed;
-    right: 0px;
-    z-index: 4;
 
-    .button{
-        position: relative;
-        margin: 20px;
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-        background-color: #1C1D20;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+.headerButtonContainer {
+    .button {
+        width: 60px; // تصغير الحجم للأجهزة الصغيرة
+        height: 60px;
+        margin: 10px;
     }
-    
-    .burger{
-        width: 100%;
-        position: relative;
-        z-index: 1;
-        &::after, &::before{
-            content: "";
-            display: block;
-            height: 1px;
-            width: 40%;
-            margin: auto;
-            background-color: white;
-            position: relative;
-            transition: transform 0.3s;
-        }
-    
-        &::after{
-            top: -5px;
-        }
-    
-        &::before{
-            top: 5px;
-        }
-    }
-    
-    .burgerActive{
-    
-        &::after{
-            transform: rotate(45deg);
-            top: -1px;
-        }
-    
-        &::before{
-            transform: rotate(-45deg);
-            top: 0px;
+}
+
+// استعلامات الوسائط للتكيف مع أحجام الشاشات المختلفة
+@media (max-width: 768px) {
+    .header {
+        padding: 15px;
+        
+        .logo {
+            .name {
+                p:nth-of-type(3) {
+                    left: 70px;
+                }
+            }
         }
         
+        .nav {
+            display: none; // إخفاء القائمة في الأجهزة الصغيرة
+        }
+    }
+    
+    .headerButtonContainer {
+        transform: scale(1); // إظهار زر القائمة في الأجهزة الصغيرة
     }
 }
 
+@media (max-width: 480px) {
+    .header {
+        padding: 10px;
+        
+        .logo {
+            p {
+                font-size: 12px;
+            }
+            .name {
+                p:nth-of-type(3) {
+                    left: 60px;
+                }
+            }
+        }
+    }
+    
+    .headerButtonContainer {
+        .button {
+            width: 50px;
+            height: 50px;
+        }
+    }
+}
